@@ -79,3 +79,4 @@ if __name__ == '__main__':
     print('\n\n\n\n\n')
     print('File Size different')
     print_dictofdict(mismatch_dict)
+    print(mismatch_dict)
