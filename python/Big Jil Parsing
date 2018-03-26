@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+f = open("STS.jil","r")
+
+lines = f.readlines()
+
+each_job = {}
+big_dict = {}
+
+for line in lines:
+    line = line.strip()
+    if line.find('insert_job:') >= 0:
+        if len(each_job) > 0:
+           big_dict[each_job["job_name"]] = each_job
+        each_job = {}
+        jline = line.split(':')
+        each_job["job_name"] = jline[1].split()[0].strip()
+        each_job["job_type"] = jline[2].strip()
+    else:
+        if len(line) > 0:
+           s = line.split(":")
+           if len(s) > 1:
+              each_job[s[0]] = s[1].strip()
+
+if len(each_job) > 0:
+   big_dict[each_job["job_name"]] = each_job
+
+
+l = []
+for jobname in big_dict:
+    if 'command' in big_dict[jobname]:
+        if big_dict[jobname]['command'].find('preload_table.sh') > 0:
+            #print(jobname,big_dict[jobname]['command'].split(" ")[1].upper())
+            pass
+
+        jc = big_dict[jobname]['command'].split(" ")[0]
+        if jc.find("/appdata/sts/prod/sts/bin") >= 0:
+           jc = jc.replace("/appdata/sts/prod/sts/bin","${STS_BIN}")
+        l.append(jc)
+
+for e in set(l):
+   print(e)
+
+
+
