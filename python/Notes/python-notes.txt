@@ -1,0 +1,27 @@
+Installing virtualenvs
+
+# Python3.7 is installed.
+
+mkdir python-virtualenvs
+cd python-virtualenvs
+
+pip install virtualenv
+python -m venv env
+
+activate env/bin/activate
+(env) $ deactivate
+
+
+#To check the site_prefix
+
+import site
+print(site.getsitepackages())
+
+#To check sys prefix
+import sys
+print(sys.prefix)
+
+
+
+
+
