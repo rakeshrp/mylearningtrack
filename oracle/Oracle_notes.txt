@@ -8,3 +8,10 @@ If a SQL statement is written so that it performs unnecessary work, then the opt
 
     Making a subquery execute for every row in an outer query
 
+
+selectivity (between 0 and 1)
+
+A value indicating the proportion of a row set retrieved by a predicate or combination of predicates, for example, WHERE last_name = 'Smith'. A selectivity of 0 means that no rows pass the predicate test, whereas a value of 1 means that all rows pass the test.
+
+The adjective selective means roughly "choosy." Thus, a highly selective query returns a low proportion of rows (selectivity close to 0), whereas an unselective query returns a high proportion of rows (selectivity close to 1).
+
