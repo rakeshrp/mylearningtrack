@@ -1,0 +1,10 @@
+If a SQL statement is written so that it performs unnecessary work, then the optimizer cannot do much to improve its performance. Examples of inefficient design include
+
+    Neglecting to add a join condition, which leads to a Cartesian join
+
+    Using hints to specify a large table as the driving table in a join
+
+    Specifying UNION instead of UNION ALL
+
+    Making a subquery execute for every row in an outer query
+
